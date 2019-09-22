@@ -111,7 +111,7 @@ def change_password(request):
             'calnet_uid': calnet_uid,
             'error': error,
             'form': form,
-            'title': 'Reset Password',
+            'title': 'Update Password',
         },
     )
 
