@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+    <div>
+        <div class="row">
+            <div class="col-sm-8 ocf-content-block">
+                {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endif %}
+
+                <form method="post" action="{% url 'email_reset' %}">
+                    {% csrf_token %}
+                    <div style="max-width: 300px;">
+                        {{ form|bootstrap }}
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Change Password" />
+                    <a class="btn btn-default" href="{% url 'login' %}">Cancel</a>
+                </form>
+            </div>
+            <div class="col-sm-4">
+                <h4>Don't remember your account username?</h4>
+                <p>
+                    You can also use your CalNet login to reset
+                    your account password by <a href="{% url 'change_password' %}">clicking here</a>.
+                    You may also <a href="{% url 'doc' 'contact' %}">send us an email</a> or drop
+                    by the OCF for staff assistance on recovering your account.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

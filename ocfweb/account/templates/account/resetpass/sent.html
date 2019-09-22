@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="ocf-content-block">
+        <p>
+            We've sent an email to the address associated with
+            <strong>{{account}}</strong>. Please check your email
+            for steps on continuing the password reset process.
+        </p>
+        <p>
+            <a class="btn btn-primary" href="{% url 'login' %}"
+                id="acct_logout">Return to login</a>
+        </p>
+    </div>
+{% endblock %}

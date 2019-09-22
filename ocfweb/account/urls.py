@@ -8,6 +8,7 @@ from ocfweb.account.register import recommend
 from ocfweb.account.register import request_account
 from ocfweb.account.register import validate
 from ocfweb.account.register import wait_for_account
+from ocfweb.account.resetpass import email_reset
 from ocfweb.account.vhost import request_vhost
 from ocfweb.account.vhost import request_vhost_success
 from ocfweb.account.vhost_mail import vhost_mail
@@ -27,6 +28,9 @@ urlpatterns = [
     url(r'^register/pending/$', account_pending, name='account_pending'),
     url(r'^register/recommend/$', recommend, name='recommend'),
     url(r'^register/validate/$', validate, name='validate'),
+
+    # password reset
+    url(r'^reset/$', email_reset, name='email_reset'),
 
     # request vhost
     url(r'^vhost/$', request_vhost, name='request_vhost'),

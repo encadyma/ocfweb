@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="ocf-content-block">
+        <p>
+            You've successfully changed the password of account
+            <strong>{{account}}</strong>.
+        </p>
+        <p>
+            Password resets take effect immediately, so you can go ahead and
+            log in right away!
+        </p>
+        <p>
+            <a class="btn btn-primary" href="{% url 'login' %}"
+                id="acct_logout">Return to login</a>
+        </p>
+    </div>
+{% endblock %}
