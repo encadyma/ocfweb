@@ -16,7 +16,7 @@
 */
 
 $color-blue-baby: #cbe1ea;
-$color-blue-light: #f8fcfc;
+$color-blue-light: #151616;
 $color-blue: #298399;
 $color-gray-light: #ccc;
 $color-gray: #888;
@@ -31,11 +31,50 @@ $hero-color: $color-green-light;
 $hero-button-color: #f7f7f7;
 $hero-button-color-hover: #fff;
 
-$status-bar-color: $color-blue-baby;
-
 $footer-top-color: $color-gray-light;
 $footer-bottom-color: $color-gray;
 $icon-font-path: '../fonts/bootstrap/';
+
+/**
+ * LIGHT MODE COLOR PALETTE (uncomment to restore)
+ */
+
+/*
+$text-color: #fff;
+$text-color-inverse: #000
+$status-bar-color: $color-blue-baby;
+$accent-color: #337ab7;
+$nav-hover-text-color: #333;
+$link-color: $color-blue;
+$link-hover-color: $color-penguin-blue;
+$copyright-color: #444;
+*/
+
+/**
+ * DRARK MODE BEGINS HERE
+ */
+
+// $background-color: #f5f5f5;
+$background-color: #1c1c1c;
+$navbar-background-color: rgba(45, 45, 45, 0.9);
+$text-color-subtle: #bbb;
+$ocf-content-color: transparent;
+$text-color: #fff;
+$text-color-inverse: #000;
+$accent-color: #ccea22;
+$dark-accent-color: #516f20;
+// $accent-color: #fb3791;
+// $dark-accent-color: #42001e;
+$hero-color: $accent-color;
+$status-bar-color: $dark-accent-color;
+$hero-button-color: #1c1c1c;
+$hero-button-color-hover: #000;
+$footer-top-color: $accent-color;
+$nav-hover-text-color: $accent-color;
+$link-color: $accent-color;
+$link-hover-color: $dark-accent-color;
+$copyright-color: $accent-color;
+$footer-bottom-color: #000;
 
 
 html {
@@ -47,10 +86,24 @@ body {
     padding-top: $navbar-height;
     font-family: Roboto, Helvetica, Arial, sans-serif;
     font-size: 16px;
-    background-color: #f5f5f5;
+    background-color: $background-color;
 
     @media (max-width: $screen-xs-max) {
         font-size: 14px;
+    }
+
+    color: $text-color;
+
+    &.dark {
+        // TODO: Implement body stuff
+    }
+
+    a {
+        color: $accent-color;
+    }
+
+    a:hover {
+        color: $dark-accent-color;
     }
 }
 
@@ -65,17 +118,17 @@ h6 {
 }
 
 .subtle {
-    color: #999;
+    color: $text-color-subtle;
 
     &:hover {
-        color: #999;
+        color: $text-color-subtle;
     }
 }
 
 .ocf-navbar {
     @extend .navbar-default;
 
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: $navbar-background-color;
     border: 0;
 
     .navbar-brand {
@@ -99,6 +152,10 @@ h6 {
     }
 
     .navbar-nav > li > a {
+        &:hover {
+            color: $nav-hover-text-color;
+        }
+
         @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
             padding-left: 11px;
             padding-right: 10px;
@@ -109,7 +166,7 @@ h6 {
     .navbar-nav > li > a,
     .ocf-account-dropdown {
         font-size: 16px;
-        color: #000;
+        color: $text-color;
         height: $navbar-height;
         padding-top: 21px;
 
@@ -123,6 +180,7 @@ h6 {
         padding-left: 10px;
         padding-right: 15px;
         background-color: rgba(100, 100, 100, 0.1);
+
         cursor: pointer;
 
         span {
@@ -139,17 +197,30 @@ h6 {
     }
 
     @media (min-width: 768px) {
+        $dropdown-highlight-bg: #303030;
+        $dropdown-highlight-hover-bg: #4c4c4c;
+        $dropdown-highlight-color: #fff;
+
         .dropdown:hover {
             > a,
             > a:hover {
                 // styles copied from .open > a
                 // (unfortunately, can't @extend inside a media query)
-                background-color: #e7e7e7;
-                color: #555;
+                background-color: $dropdown-highlight-bg;
+                color: $dropdown-highlight-color;
             }
 
             .dropdown-menu {
                 display: block;
+                background-color: $dropdown-highlight-bg;
+
+                a {
+                    color: $dropdown-highlight-color;
+                }
+
+                a:hover, a:active {
+                    background-color: $dropdown-highlight-hover-bg;
+                }
             }
         }
     }
@@ -177,11 +248,11 @@ h6 {
     padding-bottom: 20px;
 
     a {
-        color: #000;
+        color: $text-color;
     }
 
     h5 {
-        color: #000;
+        color: $text-color;
         font-weight: bold;
 
         margin-bottom: 5px;
@@ -190,19 +261,20 @@ h6 {
 
     .ocf-footer-top {
         background-color: $footer-top-color;
+        color: $text-color-inverse;
 
         p {
             margin: 10px 0;
         }
 
         a {
-            color: #337ab7;
+            color: $dark-accent-color;
         }
     }
 
     .ocf-copyright {
         p {
-            color: #444;
+            color: $copyright-color;
             font-size: 13px;
             line-height: 1.3em;
             margin: 0;
@@ -211,7 +283,7 @@ h6 {
 }
 
 .ocf-content {
-    background-color: white;
+    background-color: $ocf-content-color;
     padding: 0 25px 20px;
 }
 
@@ -225,10 +297,26 @@ h6 {
     @extend .ocf-content-block;
 }
 
+@keyframes rainbow {
+    0% { background-color: hsl(0deg, 80%, 50%); }
+    10% { background-color: hsl(36deg, 80%, 50%); }
+    20% { background-color: hsl(72deg, 80%, 50%); }
+    30% { background-color: hsl(108deg, 80%, 50%); }
+    40% { background-color: hsl(144deg, 80%, 50%); }
+    50% { background-color: hsl(180deg, 80%, 50%); }
+    60% { background-color: hsl(216deg, 80%, 50%); }
+    70% { background-color: hsl(252deg, 80%, 50%); }
+    80% { background-color: hsl(288deg, 80%, 50%); }
+    90% { background-color: hsl(324deg, 80%, 50%); }
+    100% { background-color: hsl(360deg, 80%, 50%); }
+}
+
 .ocf-hero {
     background-color: $hero-color;
+    // animation: rainbow 1s infinite;
     font-size: 16px;
     padding: 0 10px;
+    color: $text-color-inverse;
 
     @media (max-width: $screen-xs-max) {
         padding: 5px;

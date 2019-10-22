@@ -18,7 +18,7 @@
             padding: 10px;
 
             &.odd {
-                background-color: #f5f5f5;
+                background-color: #000;
             }
 
             .ocf-hour-title {
@@ -162,7 +162,7 @@
                 background-color: $hero-button-color;
                 margin-left: 10px;
                 margin-bottom: 5px;
-                color: #000;
+                color: $text-color;
 
                 // help fit both buttons on one line on iPhone
                 @media (max-width: $screen-xs-max) {

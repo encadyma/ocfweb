@@ -75,6 +75,19 @@
         border-bottom: solid 1px $hr-border;
         padding-bottom: 10px;
     }
+
+    $highlight-background: #2f2f2f;
+    $code-text-color: #e45a7d;
+
+    .highlight pre {
+        background: $highlight-background;
+        color: #fff;
+    }
+
+    code {
+        background-color: $highlight-background;
+        color: $code-text-color;
+    }
 }
 
 .doc-collapse-toggle {
